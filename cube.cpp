@@ -4,25 +4,9 @@
 #include <iostream>
 
 using namespace std;
-void Cube::U(int rows)
+void Cube::move(int face, int rows)
 {
 }
-void Cube::L(int rows)
-{
-}
-void Cube::F(int rows)
-{
-}
-void Cube::R(int rows)
-{
-}
-void Cube::B(int rows)
-{
-}
-void Cube::D(int rows)
-{
-}
-
 
 int Cube::getx()
 {return m_x;}
@@ -66,6 +50,29 @@ void Cube::setz(int i)
   }
 }
 
+void Cube::reset()
+{
+  int i = 0;
+  while(i < m_x*m_y)
+  {
+  	tab[i] = U;
+  	tab[tab.size()-i-1] = D;
+  	i++;
+  }
+  while(i < m_y*(m_x+m_z))
+  {
+  	tab[i] = L;
+  	tab[m_x*m_y+m_x*m_z+m_y*m_z+i] = R;
+  	i++;
+  }
+  while(i < m_x*m_y+m_x*m_z+m_y*m_z)
+  {
+  	tab[i] = F;
+  	tab[m_x*m_y+m_x*m_z+m_y*m_z+i] = B;
+  	i++;
+  }
+  
+}
 
 Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z))
 {

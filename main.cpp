@@ -15,7 +15,9 @@ int main(int argc, char *argv[])
     screen = SDL_SetVideoMode(2*(y+x)*(PIX+BORDURE) + 2 * BORDURE, (2*x+z)*(PIX+BORDURE) + BORDURE, 32, SDL_HWSURFACE);
     
     Cube cube(3,3,3);
+    cube.reset();
     cube.setx(4);
+    cube.reset();
     
     
     debug(2, "Entrée dans la boucle principale...");
@@ -32,5 +34,3 @@ int main(int argc, char *argv[])
     }
 return 0;
 }
-
-
