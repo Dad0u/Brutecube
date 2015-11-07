@@ -18,9 +18,6 @@ class Cube
     int getx();
     int gety();
     int getz();
-    void setx(int i);
-    void sety(int i);
-    void setz(int i);
     void reset();
 
     private:
