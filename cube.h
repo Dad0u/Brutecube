@@ -17,18 +17,20 @@ class Cube
 {
     public:
     Cube(int x,int y,int z);
-    void move(int face, int rows=1);
+    void move(std::vector<int>);
     int getx();
     int gety();
     int getz();
+    std::vector<int> u();
     void reset();
     void render(SDL_Surface *screen);
     private:
-    int m_x;
-    int m_y;
-    int m_z;
+    const int m_x;
+    const int m_y;
+    const int m_z;
     std::vector<int> tab;
     std::vector<int> coul;
+    std::vector<int> m_u;
     std::vector<SDL_Rect> pos;
     
 };

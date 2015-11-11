@@ -1,12 +1,10 @@
 #include "cube.h"
+#include "defalgs.h"
 #include "debug.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
-void Cube::move(int face, int rows)
-{
-}
 
 int Cube::getx()
 {return m_x;}
@@ -34,17 +32,31 @@ void Cube::render(SDL_Surface *screen)
     
     for(int i = 0 ; i < tab.size() ; i++)
     {
-      SDL_FillRect(rectangle, NULL, couleur[coul[i]]);
+      SDL_FillRect(rectangle, NULL, couleur[coul[tab[i]]]);
       SDL_BlitSurface(rectangle, NULL, screen, &pos[i]);
     }
     SDL_Flip(screen);
 }
 
 
+
+void Cube::move(std::vector<int> algo)
+{
+  vector<int> old = tab;
+  for(int i = 0; i < algo.size() ; i++)
+  {
+    tab[i] = old[algo[i]];
+  }
+}
+
+
+vector<int> Cube::u()
+{return m_u;}
+
 void Cube::reset()
 {
   int i = 0;
-	debug(3, "Réinitialisation du cube (Taille:  " + to_string(tab.size()) + ")");
+	debug(2, "Réinitialisation du cube (Taille:  " + to_string(tab.size()) + ")");
   for(i = 0; i < tab.size(); i++)
   {
     tab[i] = i;
@@ -52,10 +64,9 @@ void Cube::reset()
   
 }
 
-
-Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z))
+Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(2*(m_x*m_y+m_x*m_z+m_y*m_z))
 {
-	debug(3, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
+	debug(2, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
   int i = 0;
     while(i < m_x*m_y)      // Initialisation du tableau de couleurs
   {
@@ -63,6 +74,7 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
   	coul[coul.size()-i-1] = D;
   	i++;
   }
+  coul[2]=L;
   while(i < m_y*(m_x+m_z))
   {
   	coul[i] = L;
@@ -128,14 +140,9 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
     pos[i] = rect;
     i++;
     j++;
-  }
-
-
-
-
-
-
-
+  }                     // --------------
+  
+  m_u = genU(m_x,m_y,m_z,1);
 	this->reset();
 }
 
