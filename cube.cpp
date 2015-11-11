@@ -74,7 +74,8 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
   	coul[coul.size()-i-1] = D;
   	i++;
   }
-  coul[2]=L;
+  coul[2]=L;          //Pour la vérification
+  coul[5]=R;
   while(i < m_y*(m_x+m_z))
   {
   	coul[i] = L;
