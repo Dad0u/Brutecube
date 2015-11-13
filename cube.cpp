@@ -72,7 +72,7 @@ void Cube::reset()
   
 }
 
-Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(2*(m_x*m_y+m_x*m_z+m_y*m_z))
+Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z))
 {
 	debug(2, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
   int i = 0;
@@ -151,7 +151,6 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
     j++;
   }                     // --------------
   
-  m_u = genU(m_x,m_y,m_z);
 	this->reset();
 }
 

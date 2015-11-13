@@ -31,7 +31,7 @@ class Cube
     const int m_z;
     std::vector<int> tab;
     std::vector<int> coul;
-    std::vector<std::vector<int>> m_u;
+    const std::vector<std::vector<int>> m_u;
     std::vector<SDL_Rect> pos;
     
 };
