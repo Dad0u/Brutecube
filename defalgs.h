@@ -1,3 +1,3 @@
 #include <vector>
 
-std::vector<int> genU(int x,int y,int z,int rows);
+std::vector<std::vector<int>> genU(int x,int y,int z);

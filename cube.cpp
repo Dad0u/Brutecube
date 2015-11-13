@@ -58,8 +58,8 @@ void Cube::umove(std::vector<int> algo)
   }
 }
 
-vector<int> Cube::u()
-{return m_u;}
+vector<int> Cube::u(int i)
+{return m_u[i-1];}
 
 void Cube::reset()
 {
@@ -151,7 +151,7 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
     j++;
   }                     // --------------
   
-  m_u = genU(m_x,m_y,m_z,1);
+  m_u = genU(m_x,m_y,m_z);
 	this->reset();
 }
 

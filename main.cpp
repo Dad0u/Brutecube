@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 3, y = 3, z = 3;
+    int x = 3, y = 3, z = 5;
     bool continuer = true;
     SDL_Event event;
     SDL_Surface *screen = NULL, *rectangle = NULL;
@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
               {
               case SDLK_u:
                 if (SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
-                {cube.move(cube.u());}
+                {cube.move(cube.u(1));}
                 else
-                {cube.umove(cube.u());}
+                {cube.umove(cube.u(1));}
                 cube.render(screen);
               }
         }
