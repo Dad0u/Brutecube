@@ -18,6 +18,7 @@ class Cube
     public:
     Cube(int x,int y,int z);
     void move(std::vector<int>);
+    void umove(std::vector<int>);
     int getx();
     int gety();
     int getz();

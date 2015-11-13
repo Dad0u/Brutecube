@@ -7,10 +7,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 4, y = 4, z = 4;
+    int x = 3, y = 3, z = 3;
     bool continuer = true;
     SDL_Event event;
     SDL_Surface *screen = NULL, *rectangle = NULL;
+    Uint8 *keystates = SDL_GetKeyState(NULL);
     screen = SDL_SetVideoMode(2*(y+x)*(PIX+BORDURE) - BORDURE, (2*y+z)*(PIX+BORDURE) - BORDURE, 32, SDL_HWSURFACE);
     SDL_WM_SetCaption("Rubik", NULL);
     Cube cube(x,y,z);
@@ -28,12 +29,16 @@ int main(int argc, char *argv[])
                 debug(2, "Quit event détecté, fermeture.");
                 continuer = false;
             case SDL_KEYDOWN:
-		        switch(event.key.keysym.sym)
-            {
+              keystates = SDL_GetKeyState(NULL);
+		          switch(event.key.keysym.sym)
+              {
               case SDLK_u:
-                cube.move(cube.u());
+                if (SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
+                {cube.move(cube.u());}
+                else
+                {cube.umove(cube.u());}
                 cube.render(screen);
-            }
+              }
         }
     }
 return 0;

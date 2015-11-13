@@ -49,6 +49,14 @@ void Cube::move(std::vector<int> algo)
   }
 }
 
+void Cube::umove(std::vector<int> algo)
+{
+  vector<int> old = tab;
+  for(int i = 0; i < algo.size() ; i++)
+  {
+    tab[algo[i]] = old[i];
+  }
+}
 
 vector<int> Cube::u()
 {return m_u;}
