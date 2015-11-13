@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 3, y = 3, z = 5;
+    int x = 3, y = 4,z = 5;
     bool continuer = true;
     SDL_Event event;
     SDL_Surface *screen = NULL, *rectangle = NULL;
