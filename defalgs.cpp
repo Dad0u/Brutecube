@@ -12,9 +12,12 @@ vector<vector<int>> genU(int x,int y,int z)
   int len = 2*(x*y+x*z+y*z);
   int i,j;
   vector<vector<int>> res;
+
   for(int row = 1; row <= z / 2; row++)
   {
     vector<int> algo;
+
+
     if(x == y) //Cas d'un mouvement d'1/4 de tour
     {
       for(i = 0; i < x; i++)      //Déplacement de la face elle même
@@ -53,13 +56,17 @@ vector<vector<int>> genU(int x,int y,int z)
     }
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
-
+    cout << "U:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
     cout << endl;
+    res.push_back(algo);        // Ajout de l'algo au vecteur
      
   }
-  else          // Si x != y
+
+
+
+  else          // Si x != y: demi-tour
   {
     for(i = 0; i < x*y; i++)    //Inversion de la face elle même
     {
@@ -72,6 +79,7 @@ vector<vector<int>> genU(int x,int y,int z)
       else {algo.push_back(i+x*y);}
     }
     for(i = 0; i < z*x; i++)    // Déplacement de la couronne, face F
+    {
       if(i / x < row)
       {algo.push_back(i+len/2+y*z);}
       else {algo.push_back(i+(x+z)*y);}
@@ -91,11 +99,22 @@ vector<vector<int>> genU(int x,int y,int z)
 
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
-
+    
+    cout << "U2:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
     cout << endl;
+
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
+}
+
   return res;
+}
+
+
+
+vector<vector<int>> genL(int x,int y,int z)
+{
+return genU(x,y,z);
 }

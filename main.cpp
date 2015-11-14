@@ -7,8 +7,9 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 3, y = 4,z = 5;
+    int x = 3, y = 3,z = 3;
     bool continuer = true;
+    vector<int> algo;
     SDL_Event event;
     SDL_Surface *screen = NULL, *rectangle = NULL;
     Uint8 *keystates = SDL_GetKeyState(NULL);
@@ -28,17 +29,27 @@ int main(int argc, char *argv[])
             case SDL_QUIT:
                 debug(2, "Quit event détecté, fermeture.");
                 continuer = false;
+                break;
             case SDL_KEYDOWN:
               keystates = SDL_GetKeyState(NULL);
 		          switch(event.key.keysym.sym)
               {
               case SDLK_u:
-                if (SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
+                if(SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
                 {cube.move(cube.u(1));}
                 else
                 {cube.umove(cube.u(1));}
                 cube.render(screen);
+                break;
+              case SDLK_l:
+                if(SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
+                {cube.move(cube.l(1));}
+                else
+                {cube.umove(cube.l(1));}
+                cube.render(screen);
+                break;
               }
+            break;
         }
     }
 return 0;

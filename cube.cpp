@@ -42,7 +42,7 @@ void Cube::render(SDL_Surface *screen)
 
 void Cube::move(std::vector<int> algo)
 {
-  vector<int> old = tab;
+  const vector<int> old = tab;
   for(int i = 0; i < algo.size() ; i++)
   {
     tab[i] = old[algo[i]];
@@ -51,7 +51,7 @@ void Cube::move(std::vector<int> algo)
 
 void Cube::umove(std::vector<int> algo)
 {
-  vector<int> old = tab;
+  const vector<int> old = tab;
   for(int i = 0; i < algo.size() ; i++)
   {
     tab[algo[i]] = old[i];
@@ -60,6 +60,9 @@ void Cube::umove(std::vector<int> algo)
 
 vector<int> Cube::u(int i)
 {return m_u[i-1];}
+
+vector<int> Cube::l(int i)
+{return m_l[i-1];}
 
 void Cube::reset()
 {
@@ -72,7 +75,7 @@ void Cube::reset()
   
 }
 
-Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z))
+Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z)), m_l(genL(x,y,z))
 {
 	debug(2, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
   int i = 0;
@@ -82,8 +85,8 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
   	coul[coul.size()-i-1] = D;
   	i++;
   }
-  coul[2]=L;          //Pour la vérification
-  coul[5]=R;
+  //coul[2]=L;          //Pour la vérification
+  //coul[5]=R;
   while(i < m_y*(m_x+m_z))
   {
   	coul[i] = L;
