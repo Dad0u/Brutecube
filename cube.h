@@ -24,6 +24,10 @@ class Cube
     int getz();
     std::vector<int> u(int i);
     std::vector<int> l(int i);
+    std::vector<int> f(int i);
+    std::vector<int> r(int i);
+    std::vector<int> b(int i);
+    std::vector<int> d(int i);
     void reset();
     void render(SDL_Surface *screen);
     private:
@@ -34,6 +38,10 @@ class Cube
     std::vector<int> coul;
     const std::vector<std::vector<int>> m_u;
     const std::vector<std::vector<int>> m_l;
+    const std::vector<std::vector<int>> m_f;
+    const std::vector<std::vector<int>> m_r;
+    const std::vector<std::vector<int>> m_b;
+    const std::vector<std::vector<int>> m_d;
     std::vector<SDL_Rect> pos;
     
 };

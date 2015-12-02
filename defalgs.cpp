@@ -56,10 +56,10 @@ vector<vector<int>> genU(int x,int y,int z)
     }
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
-    cout << "U:" << endl;
+    /*cout << to_string(row) << "U:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
-    cout << endl;
+    cout << endl;*/
     res.push_back(algo);        // Ajout de l'algo au vecteur
      
   }
@@ -68,7 +68,7 @@ vector<vector<int>> genU(int x,int y,int z)
 
   else          // Si x != y: demi-tour
   {
-    for(i = 0; i < x*y; i++)    //Inversion de la face elle même
+    for(i = 0; i < x*y; i++)    //Inversion de la face U elle même
     {
       algo.push_back(x*y - i - 1);
     }
@@ -100,10 +100,10 @@ vector<vector<int>> genU(int x,int y,int z)
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
     
-    cout << "U2:" << endl;
+    /*cout << to_string(row) << "U2:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
-    cout << endl;
+    cout << endl;*/
 
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
@@ -116,7 +116,7 @@ vector<vector<int>> genU(int x,int y,int z)
 
 vector<vector<int>> genL(int x,int y,int z)
 {
-int len = 2*(x*y+x*z+y*z);
+  int len = 2*(x*y+x*z+y*z);
   int i,j;
   vector<vector<int>> res;
 
@@ -129,7 +129,7 @@ int len = 2*(x*y+x*z+y*z);
     {
 
 
-    for(j = 0; j < y ; j++)     // Déplacement de la première face
+    for(j = 0; j < y ; j++)     // Déplacement de U
       {
         for(i = 0; i < x; i++)
         {
@@ -157,7 +157,7 @@ int len = 2*(x*y+x*z+y*z);
       {
         if(i < row)
         {
-          algo.push_back(algo.size()-y*(x+z));
+          algo.push_back(algo.size()-y*(x+z));  
         }
         else
         {algo.push_back(algo.size());}
@@ -181,7 +181,7 @@ int len = 2*(x*y+x*z+y*z);
       }
     }
       
-    for(j = 0; j < y ; j++)   //Déplacement de F
+    for(j = 0; j < y ; j++)   //Déplacement de D
     {
       for(i = 0; i < x; i++)
       {
@@ -194,9 +194,9 @@ int len = 2*(x*y+x*z+y*z);
       }
     }
 
-    while(algo.size() < len)      // Finir de compléter l'algo
-    {algo.push_back(algo.size());}
-    cout << "L:" << endl;
+    /*while(algo.size() < len)      // Finir de compléter l'algo
+    {algo.push_back(algo.size());}*/
+    cout << to_string(row) << "L:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
     cout << endl;
@@ -210,37 +210,24 @@ int len = 2*(x*y+x*z+y*z);
   {
     for(i = 0; i < x*y; i++)    //Inversion de la face elle même
     {
-      algo.push_back(x*y - i - 1);
+      if(i % x < row)
+        {algo.push_back(len-x*y+i);}
+      else
+      {algo.push_back(i);}
     }
-    for(i = 0; i < z*y; i++)    // Déplacement de la couronne, face L
+    for(i = 0; i < z*y; i++)    // Retournement de la face L
     {
-      if(i / y < row)
-      {algo.push_back(i+len/2);}
-      else {algo.push_back(i+x*y);}
+      algo.push_back(y*(x+z)-i-1);
     }
-    for(i = 0; i < z*x; i++)    // Déplacement de la couronne, face F
-    {
-      if(i / x < row)
-      {algo.push_back(i+len/2+y*z);}
-      else {algo.push_back(i+(x+z)*y);}
-    }
-    for(i = 0; i < z*y; i++)    // Déplacement de la couronne, face R
-    {
-      if(i / y < row)
-      {algo.push_back(i+x*y);}
-      else {algo.push_back(i+len/2);}
-    }
-    for(i = 0; i < z*x; i++)    // Déplacement de la couronne, face B
-    {
-      if(i / x < row)
-      {algo.push_back(i+y*(x+z));}
-      else {algo.push_back(i+len/2+y*z);}
-    }
+
+
+// ---------------------------TODO
+    
 
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
     
-    cout << "U2:" << endl;
+    cout << to_string(row) << "L2:" << endl;
     for(i = 0; i < algo.size();i++) //Afficher pour la debug
     {cout << to_string(algo[i])+" " ;}
     cout << endl;
@@ -251,3 +238,137 @@ int len = 2*(x*y+x*z+y*z);
 
   return res;
 }
+
+
+
+vector<vector<int>> genF(int x,int y,int z)
+{
+  int len = 2*(x*y+x*z+y*z);
+  int i,j;
+  vector<vector<int>> res;
+
+  for(int row = 1; row <= z / 2; row++)
+  {
+    vector<int> algo;
+
+
+    if(z == x) //Cas d'un mouvement d'1/4 de tour
+    {
+
+    for(j = 0; j < y ; j++)     // Déplacement de U
+      {
+        for(i = 0; i < x; i++)
+        {
+          if(y - j - 1 < row)
+          {
+            algo.push_back(x*y + y*(x-i-1) + j); 
+          }
+          else
+          {algo.push_back(algo.size());}
+        }
+      }
+
+    for(i = 0; i < z; i++)     // Déplacement de L
+      {
+        for(j = 0; j < y ; j++)
+        {
+          if(y - j - 1 < row)
+          {
+            algo.push_back(len - x*y + i + x*(y-j-1));
+          }
+          else
+          {algo.push_back(algo.size());}
+        }
+      }
+
+      for(i = 0; i < x; i++)      //Déplacement de la face F 
+      {
+        for(j = 0; j < x; j++)  //Rappel: x==z
+        {
+          algo.push_back(y*(x+z)+i+x*(x-j-1));
+        }
+      }
+
+    for(i = 0; i < z ; i++)   //Déplacement de R 
+    {
+      for(j = 0; j < y; j++)
+      {
+        if(j < row)
+        {
+          algo.push_back(x*(y-j-1)+i);
+        }
+        else
+        {algo.push_back(algo.size());}
+      }
+    }
+
+    for(i = 0; i < x*z; i++)    //Remplissage de B (ne bouge pas)
+      {
+        algo.push_back(algo.size());
+      }
+      
+    for(j = 0; j < y; j++)   //Déplacement de D
+    {
+      for(i = 0; i < x ; i++)
+      {
+        if(j < row)
+        {
+          algo.push_back(len/2 + i*y + j);
+        }
+        else
+        {algo.push_back(algo.size());}
+      }
+    }
+
+    while(algo.size() < len)      // Finir de compléter l'algo
+    {algo.push_back(algo.size());}
+    cout << to_string(row) << "F:" << endl;
+    for(i = 0; i < algo.size();i++) //Afficher pour la debug
+    {cout << to_string(algo[i])+" " ;}
+    cout << endl;
+    res.push_back(algo);        // Ajout de l'algo au vecteur
+     
+  }
+
+
+
+  else          // Si x != y: demi-tour
+  {
+    
+
+
+    
+
+    while(algo.size() < len)      // Finir de compléter l'algo
+    {algo.push_back(algo.size());}
+    
+    cout << to_string(row) << "F2:" << endl;
+    for(i = 0; i < algo.size();i++) //Afficher pour la debug
+    {cout << to_string(algo[i])+" " ;}
+    cout << endl;
+
+    res.push_back(algo);        // Ajout de l'algo au vecteur
+  }
+}
+
+  return res;
+}
+
+
+
+vector<vector<int>> genR(int x,int y,int z)
+{
+return genU(x,y,z);
+}
+
+vector<vector<int>> genB(int x,int y,int z)
+{
+return genU(x,y,z);
+}
+
+vector<vector<int>> genD(int x,int y,int z)
+{
+return genU(x,y,z);
+}
+
+

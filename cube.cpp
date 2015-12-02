@@ -64,6 +64,18 @@ vector<int> Cube::u(int i)
 vector<int> Cube::l(int i)
 {return m_l[i-1];}
 
+vector<int> Cube::f(int i)
+{return m_f[i-1];}
+
+vector<int> Cube::r(int i)
+{return m_r[i-1];}
+
+vector<int> Cube::b(int i)
+{return m_b[i-1];}
+
+vector<int> Cube::d(int i)
+{return m_d[i-1];}
+
 void Cube::reset()
 {
   int i = 0;
@@ -75,7 +87,7 @@ void Cube::reset()
   
 }
 
-Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z)), m_l(genL(x,y,z))
+Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z)), m_l(genL(x,y,z)), m_f(genF(x,y,z)), m_r(genR(x,y,z)), m_b(genB(x,y,z)), m_d(genD(x,y,z))
 {
 	debug(2, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
   int i = 0;
@@ -97,7 +109,7 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
   	coul[m_z*(m_x+m_y)+i] = B;
   	i++;
   }                       // -----
-  coul[51]=U;          //Pour la vérification
+  //coul[51]=U;          //Pour la vérification
   //coul[5]=R;
   i = 0;
   SDL_Rect rect;          // Initialisation du tableau des positions
