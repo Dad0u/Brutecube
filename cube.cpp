@@ -1,5 +1,5 @@
 #include "cube.h"
-#include "defalgs.h"
+//#include "defalgs.h"
 #include "debug.h"
 #include <string>
 #include <iostream>

@@ -17,7 +17,18 @@ int main(int argc, char *argv[])
     SDL_WM_SetCaption("Rubik", NULL);
     Cube cube(x,y,z);
     cube.render(screen);
-
+    cout << "U: ";
+    checkalg(cube.u(1));
+    cout << "U2: ";
+    checkalg(cube.u(2));
+    cout << "L: ";
+    checkalg(cube.l(1));
+    cout << "L2: ";
+    checkalg(cube.l(2));
+    cout << "F: ";
+    checkalg(cube.f(1));
+    cout << "F2: ";
+    checkalg(cube.f(2));
     
     debug(2, "Entrée dans la boucle principale...");
     int larg = 1;

@@ -194,12 +194,6 @@ vector<vector<int>> genL(int x,int y,int z)
       }
     }
 
-    /*while(algo.size() < len)      // Finir de compléter l'algo
-    {algo.push_back(algo.size());}*/
-    cout << to_string(row) << "L:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;
     res.push_back(algo);        // Ajout de l'algo au vecteur
      
   }
@@ -227,10 +221,7 @@ vector<vector<int>> genL(int x,int y,int z)
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
     
-    cout << to_string(row) << "L2:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;
+
 
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
@@ -320,12 +311,6 @@ vector<vector<int>> genF(int x,int y,int z)
       }
     }
 
-    while(algo.size() < len)      // Finir de compléter l'algo
-    {algo.push_back(algo.size());}
-    cout << to_string(row) << "F:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;
     res.push_back(algo);        // Ajout de l'algo au vecteur
      
   }
@@ -342,10 +327,6 @@ vector<vector<int>> genF(int x,int y,int z)
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
     
-    cout << to_string(row) << "F2:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;
 
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
