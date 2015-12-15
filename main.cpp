@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 5, y = 5,z = 5;
+    int x = 3, y = 4,z = 5;
     bool continuer = true;
     vector<int> algo;
     SDL_Event event;
@@ -22,13 +22,26 @@ int main(int argc, char *argv[])
     cout << "U2: ";
     checkalg(cube.u(2));
     cout << "L: ";
-    checkalg(cube.l(1));
+    checkalg(cube.l(1),true);
     cout << "L2: ";
-    checkalg(cube.l(2));
+    checkalg(cube.l(2),true);
     cout << "F: ";
     checkalg(cube.f(1));
     cout << "F2: ";
     checkalg(cube.f(2));
+    cout << "R: ";
+    checkalg(cube.r(1));
+    cout << "R2: ";
+    checkalg(cube.r(2));
+    cout << "B: ";
+    checkalg(cube.b(1));
+    cout << "B2: ";
+    checkalg(cube.b(2));
+    cout << "D: ";
+    checkalg(cube.d(1));
+    cout << "D2: ";
+    checkalg(cube.d(2));
+
     
     debug(2, "Entrée dans la boucle principale...");
     int larg = 1;

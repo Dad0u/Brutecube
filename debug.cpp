@@ -15,9 +15,9 @@ void checkalg(std::vector<int> alg, bool disp)
   bool ok = true;
   for(int i = 0 ; i < alg.size() ; i++)
   {
-    if(tab[i] == 0)
+    if(tab[alg[i]] == 0)
     {
-      tab[i] = 1;
+      tab[alg[i]] = 1;
       if(disp)
       {cout << to_string(alg[i]) << " ";}
     }
