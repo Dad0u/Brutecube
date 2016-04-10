@@ -69,6 +69,10 @@ int main(int argc, char *argv[])
               case SDLK_w:
                 larg = 3;
                 break;
+              case SDLK_c:
+                cube.reset();
+                cube.render(screen);
+                break;
               case SDLK_u:
                 if(SDL_GetKeyState(NULL)[SDLK_LSHIFT] == 0)
                 {cube.move(cube.u(larg));}

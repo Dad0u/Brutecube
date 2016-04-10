@@ -224,7 +224,7 @@ vector<vector<int>> genL(int x,int y,int z)
     }
     for(i = 0; i < y*z; i++)    //Remplissage de R (ne bouge pas)
     {algo.push_back(len/2+i);}
-    for(i = 0; i < x*z; i++)    //Déplacement de B <- FAIL
+    for(i = 0; i < x*z; i++)    //Déplacement de B 
     {
       if(x - (i % x) - 1 < row)
         {algo.push_back(len/2-i-1);}
@@ -343,9 +343,45 @@ vector<vector<int>> genF(int x,int y,int z)
 
   else          // Si x != y: demi-tour
   {
+
+    for(i = 0; i < x*y; i++)    //Déplacement de U
+    {
+      if(i / x > y-row-1)
+        {algo.push_back(len-i-1);}
+      else
+      {algo.push_back(i);}
+    }
+    for(i = 0; i < z*y; i++)    //Déplacement de L
+    {
+      if(i % y > y-row-1)
+        {algo.push_back(len/2+z*y-i-1);}
+      else
+      {algo.push_back(x*y+i);}
+    }
     
+    for(i = 0; i < z*x; i++)    // Retournement de la face F
+    {
+      algo.push_back(len/2-i-1);
+    }
+    /* < --------------------------  A TERMINER
+    for(i = 0; i < x*z; i++)    //Déplacement de R 
+    {
+      if(x - (i % x) - 1 < row)
+        {algo.push_back(len/2-i-1);}
+      else
+      {algo.push_back(len/2+y*z+i);}
+    }
+    for(i = 0; i < y*z; i++)    //Remplissage de B (ne bouge pas)
+    {algo.push_back(len/2+i);}
+    for(i = 0; i < x*y; i++)    //Déplacement de D
+    {
+      if(i % x < row)
+      {algo.push_back(i);}
+      else
+      {algo.push_back(len-x*y+i);}
+    }
 
-
+*/
     
 
     while(algo.size() < len)      // Finir de compléter l'algo
