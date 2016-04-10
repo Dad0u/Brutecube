@@ -19,13 +19,14 @@ void Cube::render(SDL_Surface *screen)
 {
 	SDL_Surface *rectangle = NULL;
   Uint32 rouge = SDL_MapRGB(screen->format, 255, 0, 0), vert = SDL_MapRGB(screen->format, 0, 255, 0), bleu = SDL_MapRGB(screen->format, 0, 0, 255), blanc = SDL_MapRGB(screen->format, 255, 255, 255), noir = SDL_MapRGB(screen->format, 0, 0, 0), jaune = SDL_MapRGB(screen->format, 255, 255, 0), orange = SDL_MapRGB(screen->format, 255, 125, 0), gris = SDL_MapRGB(screen->format, 125, 125, 125);
-    Uint32 couleur[6];
+    Uint32 couleur[7];
     couleur[U] = blanc;
     couleur[L] = rouge;
     couleur[F] = bleu;
     couleur[R] = orange;
     couleur[B] = vert;
     couleur[D] = jaune;
+    couleur[G] = gris;
     rectangle = SDL_CreateRGBSurface(SDL_HWSURFACE, PIX, PIX, 32, 0, 0, 0, 0);
     SDL_FillRect(rectangle, NULL, blanc);
     //SDL_Rect pos;
@@ -109,8 +110,7 @@ Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m
   	coul[m_z*(m_x+m_y)+i] = B;
   	i++;
   }                       // -----
-  //coul[51]=U;          //Pour la vérification
-  //coul[5]=R;
+  //coul[47]=G;          //Pour la vérification
   i = 0;
   SDL_Rect rect;          // Initialisation du tableau des positions
   while(i < m_x*m_y)          // Face U

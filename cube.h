@@ -7,6 +7,7 @@
 #define R 3
 #define B 4
 #define D 5
+#define G 6
 #define PIX 40
 #define BORDURE 3
 #include <vector>
@@ -47,4 +48,4 @@ class Cube
 };
 
 
-#endif
+#endif  //ifndef CUBE
