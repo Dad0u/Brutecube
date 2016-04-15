@@ -16,8 +16,6 @@ vector<vector<int>> genU(int x,int y,int z)
   for(int row = 1; row <= z / 2; row++)
   {
     vector<int> algo;
-
-
     if(x == y) //Cas d'un mouvement d'1/4 de tour
     {
       for(i = 0; i < x; i++)      //Déplacement de la face elle même
@@ -56,15 +54,8 @@ vector<vector<int>> genU(int x,int y,int z)
     }
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
-    /*cout << to_string(row) << "U:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;*/
     res.push_back(algo);        // Ajout de l'algo au vecteur
-     
   }
-
-
 
   else          // Si x != y: demi-tour
   {
@@ -100,15 +91,9 @@ vector<vector<int>> genU(int x,int y,int z)
     while(algo.size() < len)      // Finir de compléter l'algo
     {algo.push_back(algo.size());}
     
-    /*cout << to_string(row) << "U2:" << endl;
-    for(i = 0; i < algo.size();i++) //Afficher pour la debug
-    {cout << to_string(algo[i])+" " ;}
-    cout << endl;*/
-
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
 }
-
   return res;
 }
 
@@ -123,8 +108,6 @@ vector<vector<int>> genL(int x,int y,int z)
   for(int row = 1; row <= z / 2; row++)
   {
     vector<int> algo;
-
-
     if(z == y) //Cas d'un mouvement d'1/4 de tour
     {
 
@@ -141,7 +124,6 @@ vector<vector<int>> genL(int x,int y,int z)
           {algo.push_back(algo.size());}
         }
       }
-
 
       for(i = 0; i < y; i++)      //Déplacement de la face L elle même
       {
@@ -195,12 +177,10 @@ vector<vector<int>> genL(int x,int y,int z)
     }
 
     res.push_back(algo);        // Ajout de l'algo au vecteur
-     
   }
 
   else          // Si x != y: demi-tour
   {
-
 
     for(i = 0; i < x*y; i++)    //Déplacement de U
     {
@@ -255,7 +235,6 @@ vector<vector<int>> genF(int x,int y,int z)
   for(int row = 1; row <= z / 2; row++)
   {
     vector<int> algo;
-
 
     if(z == x) //Cas d'un mouvement d'1/4 de tour
     {
@@ -329,8 +308,6 @@ vector<vector<int>> genF(int x,int y,int z)
      
   }
 
-
-
   else          // Si x != y: demi-tour
   {
 
@@ -372,16 +349,10 @@ vector<vector<int>> genF(int x,int y,int z)
       else
       {algo.push_back(len-x*y+i);}
     }
-    
-
-   // while(algo.size() < len)      // Finir de compléter l'algo
-    //{algo.push_back(algo.size());}
-    
 
     res.push_back(algo);        // Ajout de l'algo au vecteur
   }
 }
-
   return res;
 }
 
