@@ -22,13 +22,13 @@ int main(int argc, char *argv[])
     cout << "U2: ";
     checkalg(cube.u(2));
     cout << "L: ";
-    checkalg(cube.l(1),true);
+    checkalg(cube.l(1));
     cout << "L2: ";
-    checkalg(cube.l(2),true);
+    checkalg(cube.l(2));
     cout << "F: ";
-    checkalg(cube.f(1));
+    checkalg(cube.f(1),true);
     cout << "F2: ";
-    checkalg(cube.f(2));
+    checkalg(cube.f(2),true);
     cout << "R: ";
     checkalg(cube.r(1));
     cout << "R2: ";
@@ -60,6 +60,10 @@ int main(int argc, char *argv[])
               keystates = SDL_GetKeyState(NULL);
 		          switch(event.key.keysym.sym)
               {
+              case SDLK_x:
+                debug(2, "Appui sur x, fermeture...");
+                continuer = false;
+                break;
               case SDLK_a:
                 larg = 1;
                 break;
