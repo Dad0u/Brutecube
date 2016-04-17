@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int x = 3, y = 4,z = 5;
+    int x = 4, y = 4,z = 4;
     bool continuer = true;
     vector<int> algo;
     SDL_Event event;
@@ -26,13 +26,13 @@ int main(int argc, char *argv[])
     cout << "L2: ";
     checkalg(cube.l(2));
     cout << "F: ";
-    checkalg(cube.f(1),true);
+    checkalg(cube.f(1));
     cout << "F2: ";
-    checkalg(cube.f(2),true);
+    checkalg(cube.f(2));
     cout << "R: ";
-    checkalg(cube.r(1));
+    checkalg(cube.r(1),true);
     cout << "R2: ";
-    checkalg(cube.r(2));
+    checkalg(cube.r(2),true);
     cout << "B: ";
     checkalg(cube.b(1));
     cout << "B2: ";
@@ -43,17 +43,17 @@ int main(int argc, char *argv[])
     checkalg(cube.d(2));
 
     
-    debug(2, "Entrée dans la boucle principale...");
+    debug<2>("Entrée dans la boucle principale...");
     int larg = 1;
     while(continuer)
     {
     SDL_WaitEvent(&event);
-    debug(3, "Event détecté: "+to_string(event.type));
+    debug<3>("Event détecté: "+to_string(event.type));
       switch(event.type)
         {
 
             case SDL_QUIT:
-                debug(2, "Quit event détecté, fermeture.");
+                debug<2>("Quit event détecté, fermeture.");
                 continuer = false;
                 break;
             case SDL_KEYDOWN:
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 		          switch(event.key.keysym.sym)
               {
               case SDLK_x:
-                debug(2, "Appui sur x, fermeture...");
+                debug<2>("Appui sur x, fermeture...");
                 continuer = false;
                 break;
               case SDLK_a:

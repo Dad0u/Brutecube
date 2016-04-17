@@ -80,7 +80,7 @@ vector<int> Cube::d(int i)
 void Cube::reset()
 {
   int i = 0;
-	debug(2, "Réinitialisation du cube (Taille:  " + to_string(tab.size()) + ")");
+	debug<2>("Réinitialisation du cube (Taille:  " + to_string(tab.size()) + ")");
   for(i = 0; i < tab.size(); i++)
   {
     tab[i] = i;
@@ -90,7 +90,7 @@ void Cube::reset()
 
 Cube::Cube(int x,int y,int z):m_x(x),m_y(y),m_z(z), tab(2*(m_x*m_y+m_x*m_z+m_y*m_z)), coul(2*(m_x*m_y+m_x*m_z+m_y*m_z)), pos(2*(m_x*m_y+m_x*m_z+m_y*m_z)), m_u(genU(x,y,z)), m_l(genL(x,y,z)), m_f(genF(x,y,z)), m_r(genR(x,y,z)), m_b(genB(x,y,z)), m_d(genD(x,y,z))
 {
-	debug(2, "Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
+	debug<2>("Création d'un cube de taille " + to_string(m_x) + " x " + to_string(m_y) + " x " + to_string(m_z));
   int i = 0;
     while(i < m_x*m_y)      // Initialisation du tableau de couleurs
   {

@@ -3,12 +3,6 @@
 #include <string>
 using namespace std;
 
-void debug(int lvl, string msg)
-{
-    if(DEBUG >= lvl)
-        {cout << msg << endl;}
-}
-
 void checkalg(std::vector<int> alg, bool disp)
 {
   vector<int> tab(alg.size(),0);
@@ -35,6 +29,4 @@ void checkalg(std::vector<int> alg, bool disp)
   {cout << "OK!" << endl;}
   else
   {cout << "/!\\ Algo incorrect !" << endl;}
-  
-
 }
